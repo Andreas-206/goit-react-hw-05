@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
+import { Suspense, useParams, useEffect } from 'react';
 
-export default MoviesPage() {
+export default function MoviesPage() {
 	const handleSubmit = value => {
 	setSearchParams({ query: value })
 }
