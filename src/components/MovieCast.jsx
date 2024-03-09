@@ -1,5 +1,5 @@
-import { useParams, useEffect } from "react-router-dom"
-import React from 'react'
+import { useParams } from "react-router-dom"
+import React, { useEffect } from 'react'
 
 function MovieCast() {
 	const { movieId } = useParams()
