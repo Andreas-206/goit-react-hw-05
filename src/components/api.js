@@ -15,23 +15,30 @@ export async function fetchMovies() {
 }
 
 export async function fetchMovie(id) {
-	const { data } = await axios.get(`/movie/${id}`, options)
+	const { data } = await axios.get(`/movie/${id}?language=en-US`, options)
 	return data
 }
 
 export async function fetchMovieCredits(id) {
-	const { data } = await axios.get(`/movie/${id}/credits`, options)
+	const { data } = await axios.get(
+		`/movie/${id}?language=en-US/credits`,
+		options
+	)
 	return data.cast
 }
 
 export async function fetchMovieReview(id) {
-	const { data } = await axios.get(`/movie/${id}/reviews`, options)
+	const { data } = await axios.get(
+		`/movie/${id}/reviews?language=en-US&page=1`,
+		options
+	)
 	return data.results
 }
 
-export async function fetchMoviesByTitle(search) {
-	const { data } = await axios.get(`/search/movie?query=${search}`, options)
+export async function fetchMoviesBySearch(search) {
+	const { data } = await axios.get(
+		`/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
+		options
+	)
 	return data.results
 }
-
-export default async function () {}
