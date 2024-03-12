@@ -21,7 +21,7 @@ const Movies = () => {
 			setLoading(true)
 			try {
 				const reviews = await fetchMoviesBySearch(query)
-				setMovies(reviews.results)
+				setMovies(reviews)
 			} catch (error) {
 				setError(error.message)
 			} finally {
