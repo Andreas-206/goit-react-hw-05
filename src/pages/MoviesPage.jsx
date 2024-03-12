@@ -5,11 +5,11 @@ import SearchInput from '../components/SearchInput/SearchInput'
 import MoviesList from '../components/MoviesList/MoviesList'
 
 const Movies = () => {
-	const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-	const [searchParams, setSearchParams] = useSearchParams('');
-	
+	const [movies, setMovies] = useState([])
+	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState('')
+	const [searchParams, setSearchParams] = useSearchParams('')
+
 	const onSearch = query => {
 		setSearchParams({ search: query })
 	}
@@ -42,46 +42,3 @@ const Movies = () => {
 }
 
 export default Movies
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export default function MoviesPage() {
-// 	const handleSubmit = value => {
-// 		setSearchParams({ query: value })
-// 	}
-
-// 	const { movieId } = useParams()
-// 	useEffect(() => {
-// 		if (!movieId) return
-// 	}, [movieId])
-
-// 	return <Suspense />
-}
