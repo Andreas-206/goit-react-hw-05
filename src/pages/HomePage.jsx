@@ -7,6 +7,7 @@ import '../App.css'
 export default function HomePage() {
 	const [movies, setMovies] = useState([])
 	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState(false)
 
 	useEffect(() => {
 		async function getData() {
@@ -15,7 +16,7 @@ export default function HomePage() {
 				const data = await fetchMovies()
 				setMovies(data)
 			} catch (error) {
-				console.error('Error fetching movies:', error)
+				setError(true)
 			} finally {
 				setLoading(false)
 			}
@@ -27,6 +28,7 @@ export default function HomePage() {
 		<>
 			<h1 className='title'>Trending today</h1>
 			{loading && <Loader />}
+			{error && <p>Error, movie not found!!!</p>}
 			<div className='container'>
 				<MoviesList movies={movies} />
 			</div>
