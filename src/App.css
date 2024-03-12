@@ -5,3 +5,46 @@
 .title {
 	margin-bottom: 10px;
 }
+
+.movie-title {
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.overview {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.genres {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.btn-back {
+	display: block;
+	text-align: center;
+	width: 80px;
+	text-decoration: none;
+	color: blue;
+	background-color: silver;
+	border-color: wheat;
+	border-style: groove;
+	border-width: 1px;
+	border-radius: 4px;
+	margin-bottom: 24px;
+}
+
+.additional-info {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.span {
+	font-size: 16px;
+}
+
+.author {
+	font-size: 20px;
+	font-weight: 700;
+}
