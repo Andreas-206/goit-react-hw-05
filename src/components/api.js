@@ -28,11 +28,11 @@ export async function fetchMovieCredits(id) {
 }
 
 export async function fetchMovieReview(id) {
-	const { data: reviewData } = await axios.get(
+	const { data } = await axios.get(
 		`/movie/${id}/reviews?language=en-US&page=1`,
 		options
 	)
-	return reviewData.results
+	return data.results
 }
 
 export async function fetchMoviesBySearch(search) {

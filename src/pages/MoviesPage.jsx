@@ -20,8 +20,8 @@ const Movies = () => {
 		const searchMovie = async () => {
 			setLoading(true)
 			try {
-				const data = await fetchMoviesBySearch(query)
-				setMovies(data.results)
+				const reviews = await fetchMoviesBySearch(query)
+				setMovies(reviews.results)
 			} catch (error) {
 				setError(error.message)
 			} finally {
