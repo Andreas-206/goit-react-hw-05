@@ -12,11 +12,15 @@ const MovieCast = () => {
 		'https://pixabay.com/ru/photos/%D1%86%D0%B2%D0%B5%D1%82%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%BB%D0%B8%D0%B2%D1%8B-%D1%86%D0%B2%D0%B5%D1%82%D1%8B-%D0%B2%D0%B5%D1%81%D0%BD%D0%B0-7933169/'
 
 	useEffect(() => {
-		const fetchMovieCast = async () => {
+		const fetchData = async () => {
 			setLoading(true)
 			try {
 				const data = await fetchMovieCredits(movieId)
-				setGetCast(data.getCast)
+				if (data && data.getCast && Array.isArray(data.getCast)) {
+					setGetCast(data.getCast)
+				} else {
+					setError('Error: Invalid data format received.')
+				}
 			} catch (error) {
 				setError(error.message)
 			} finally {
@@ -24,12 +28,12 @@ const MovieCast = () => {
 			}
 		}
 
-		fetchMovieCast()
+		fetchData()
 	}, [movieId])
 
 	return (
 		<div>
-			{error && <p>Error!!!</p>}
+			{error && getCast.length === 0 && <p>Error!!!</p>}
 			{loading && <p>Loading...</p>}
 			{getCast && getCast.length > 0 && (
 				<ul>
