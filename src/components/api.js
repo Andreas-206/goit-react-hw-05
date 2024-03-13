@@ -21,7 +21,7 @@ export async function fetchMovie(id) {
 
 export async function fetchMovieCredits(id) {
 	const { data } = await axios.get(
-		`/movie/${id}?language=en-US/credits`,
+		`/movie/${id}/credits?language=en-US`,
 		options
 	)
 	return data.cast

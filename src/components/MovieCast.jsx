@@ -6,38 +6,50 @@ const MovieCast = () => {
 	const { movieId } = useParams()
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
-	const [getCast, setGetCast] = useState()
+	const [actors, setActors] = useState([])
 
 	const defImg =
 		'https://pixabay.com/ru/photos/%D1%86%D0%B2%D0%B5%D1%82%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%BB%D0%B8%D0%B2%D1%8B-%D1%86%D0%B2%D0%B5%D1%82%D1%8B-%D0%B2%D0%B5%D1%81%D0%BD%D0%B0-7933169/'
 
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		setLoading(true)
+	// 		try {
+	// 			const data = await fetchMovieCredits(movieId)
+	// 			setActors(data.actors)
+	// 			console.log(setActors)
+	// 		} catch (error) {
+	// 			setError(error.message)
+	// 		} finally {
+	// 			setLoading(false)
+	// 		}
+	// 	}
+
+	// 	fetchData()
+	// }, [movieId, setActors])
+
 	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true)
+		async function getMovie() {
 			try {
+				setLoading(true)
 				const data = await fetchMovieCredits(movieId)
-				if (data && data.getCast && Array.isArray(data.getCast)) {
-					setGetCast(data.getCast)
-				} else {
-					setError('Error: Invalid data format received.')
-				}
+				setActors(data)
 			} catch (error) {
-				setError(error.message)
+				setError(true)
 			} finally {
 				setLoading(false)
 			}
 		}
-
-		fetchData()
+		getMovie()
 	}, [movieId])
 
 	return (
 		<div>
-			{error && getCast.length === 0 && <p>Error!!!</p>}
+			{error && <p>Error!!!</p>}
 			{loading && <p>Loading...</p>}
-			{getCast && getCast.length > 0 && (
+			{actors && actors.length > 0 && (
 				<ul>
-					{getCast.map(({ cast_id, character, name, profile_path }) => (
+					{actors.map(({ cast_id, character, name, profile_path }) => (
 						<li key={cast_id}>
 							<img
 								src={
